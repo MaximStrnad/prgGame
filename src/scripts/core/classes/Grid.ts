@@ -1,5 +1,3 @@
-
-import Vector from "./Vector";
 import  Cell  from "./Cell"
 export default class Grid {
     cells: Cell[];
@@ -15,17 +13,14 @@ export default class Grid {
         this.totalCells = this.cellsHorizonataly * this.cellsVeritacally;
         this.cells = [];
         this.size = size;
-        console.log(this.totalCells);
         for(let i = 0; i <= this.totalCells; i++){
-            const color: Vector = new Vector(32,234,232);
+            const color: p5.Vector = p.createVector(32,234,232);
             let x = i % this.cellsHorizonataly === 0 ? this.size * this.cellsHorizonataly : i % this.cellsHorizonataly * this.size;
             let y = i % this.cellsVeritacally === 0 ? this.size * (i / this.cellsVeritacally) : i % this.cellsVeritacally * this.size;
-            console.log(" i" + i + " ver "  + this.cellsVeritacally + "  hor " +  this.cellsHorizonataly);
-            const pos: Vector = new Vector(x, y, null);
-
-            this.cells.push(new Cell(this.p, pos, null, color, 40));
+            const pos: p5.Vector = p.createVector(x, y);
+            const size: p5.Vector = p.createVector(40,40);
+            this.cells.push(new Cell(this.p, pos, size, null, color));
         }
-        console.log(this.cells);
     }
     public render () {
         this.p.rect(304,304,32,32);

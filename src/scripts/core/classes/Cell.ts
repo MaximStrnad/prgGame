@@ -1,14 +1,12 @@
-import p5 from 'p5';
-import ImageLoader = require('react-imageloader');
 import Texture from "./texture";
 
 export default class Cell {
-    public color: Vector;
+    public color: p5.Vector;
     public texture: Texture;
-    public position: Vector;
-    public size: number;
+    public position: p5.Vector;
+    public size: p5.Vector;
     public p: p5;
-    constructor(p: p5, position:Vector, texture: Texture, color: Vector, size: number) {
+    constructor(p: p5, position: p5.Vector,size: p5.Vector, texture: Texture, color: p5.Vector) {
         this.p = p;
         this.texture = texture ? texture : null;
         this.color = color ? color : null;
@@ -21,8 +19,7 @@ export default class Cell {
      * render
      */
     public render() {
-        this.p.rect(this.position.x, this.position.y, this.size, this.size);
-        console.log("x , y, s" + this.position.x + "  " + this.position.y + "  " + this.position.size)
+        this.p.rect(this.position.x, this.position.y, this.size.x, this.size.y);
         if(this.texture) {
             this.texture.apply();
         } else if (this.color) {
